@@ -2,7 +2,7 @@ function  [xcode,ycode] = extract_code(binary,xech,yech)
 
 a=0;
 for i=1:length(binary(1,:));
-    if binary(1,i)==1
+    if binary(1,i)==0
         xcode(1,1)=xech(1,i);
         ycode(1,1)=yech(1,i);
         a = a+1;
@@ -11,7 +11,7 @@ for i=1:length(binary(1,:));
 end
 
 for i=length(binary(1,:)):-1:1;
-    if binary(1,i)==1
+    if binary(1,i)==0
         xcode(1,2)=xech(1,i);
         ycode(1,2)=yech(1,i);
         a = a+1;

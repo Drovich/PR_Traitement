@@ -14,12 +14,14 @@ M=n*95;
 % % % après ça reste pas ouf, nottement un petit probleme dans le seuil quand
 % % % l'image est trop "binaire" que j'ai régler en fixant abritrairement a
 % % % 128 quand c'est le cas, sinon il est a 256...
-% B = double(imread('code_bar.png'));
-B = double(imread('cod.jpg'));
-% B = double(imread('c1.jpg'));
-% B = double(imread('c3.jpg'));
-% B = double(imread('c5.jpg'));
-% B = double(imread('c6.jpg'));
+% B = double(imread('../code_bar.png'));
+B = double(imread('../cod.jpg'));
+% B = double(imread('../c1.jpg'));
+% B = double(imread('../c3.jpg'));
+% B = double(imread('../c5.jpg'));
+% B = double(imread('../c6.jpg'));
+B = double(imread('../c11.jpg'));
+B = double(imread('../c10.jpg'));
 
 
 % code_bar = rgbtogray(A);
