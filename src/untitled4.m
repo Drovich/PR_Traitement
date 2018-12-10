@@ -4,7 +4,7 @@ clc;
 
 %%
 
-n=7; %% devrait être défini en fonction de la longeur de mon code bar sur l'image, et si possible impair !!
+n=15; %% devrait être défini en fonction de la longeur de mon code bar sur l'image, et si possible impair !!
 M=n*95;
 
 
@@ -14,14 +14,15 @@ M=n*95;
 % % % après ça reste pas ouf, nottement un petit probleme dans le seuil quand
 % % % l'image est trop "binaire" que j'ai régler en fixant abritrairement a
 % % % 128 quand c'est le cas, sinon il est a 256...
-% B = double(imread('../code_bar.png'));
-B = double(imread('../cod.jpg'));
+B = double(imread('../code_bar.png'));
+% B = double(imread('../cod.jpg'));
 % B = double(imread('../c1.jpg'));
 % B = double(imread('../c3.jpg'));
 % B = double(imread('../c5.jpg'));
 % B = double(imread('../c6.jpg'));
-B = double(imread('../c11.jpg'));
-B = double(imread('../c10.jpg'));
+% B = double(imread('../c11.jpg'));
+% B = double(imread('../c12.jpg'));
+% B = double(imread('../c10.jpg'));
 
 
 % code_bar = rgbtogray(A);
@@ -33,7 +34,7 @@ imshow(uint8(codes));
 a=0;
 plausibilites=zeros(1,13);
 chiffres = zeros(1,13) -1;
-while ( plausibilites(1)<0.9) %|| (chiffres(1)<0) || )
+while ( (plausibilites(1)<0.8) || (chiffres(1)<0) || cle_controle<0 )
     x = 0;
     y = 0;
     x = round(2 + (h-3)*rand(2));
@@ -58,9 +59,9 @@ while ( plausibilites(1)<0.9) %|| (chiffres(1)<0) || )
     
     [binary_code_image] = seuillage(profil_code,threshold2);
     
-    [elements, chiffres, plausibilites] = get_elts_chiffres(binary_code_image, n)
-    a=a+1;
-    plausibilites(1)
+    [elements, chiffres, plausibilites,cle_controle] = get_elts_chiffres(binary_code_image, n)
+    a=a+1
+    plausibilites(1);
 end
 
 % [binary_code] = code_img2code(binary_code_image,n);

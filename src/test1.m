@@ -16,13 +16,15 @@ M=n*95;
 % % % 128 quand c'est le cas, sinon il est a 256...
 % B = double(imread('../code_bar.png'));
 % B = double(imread('../cod.jpg'));
+% B = double(imread('../code1.jpg'));
 % B = double(imread('../c1.jpg'));
 % B = double(imread('../c3.jpg'));
 % B = double(imread('../c5.jpg'));
 % B = double(imread('../c6.jpg'));
 % B = double(imread('../c8.jpg'));
 % B = double(imread('../c10.jpg'));
-B = double(imread('../c11.jpg'));
+% B = double(imread('../c11.jpg'));
+% B = double(imread('../c12.jpg'));
 
 
 % code_bar = rgbtogray(A);
@@ -51,7 +53,7 @@ L=0;
 
 [binary_code_image] = seuillage(profil_code,threshold2);
 
-[elements, chiffres, plausibilites] = get_elts_chiffres(binary_code_image, n)
+[elements, chiffres, plausibilites, cle_controle] = get_elts_chiffres(binary_code_image, n)
 
 
 % [binary_code] = code_img2code(binary_code_image,n);
