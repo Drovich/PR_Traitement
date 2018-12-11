@@ -1,9 +1,4 @@
-clear all;
-close all;
-clc;
-
-%%
-
+function [] = aleatory(B)
 n=15; %% devrait être défini en fonction de la longeur de mon code bar sur l'image, et si possible impair !!
 M=n*95;
 
@@ -14,7 +9,7 @@ M=n*95;
 % % % après ça reste pas ouf, nottement un petit probleme dans le seuil quand
 % % % l'image est trop "binaire" que j'ai régler en fixant abritrairement a
 % % % 128 quand c'est le cas, sinon il est a 256...
-B = double(imread('../image/code_bar.png'));
+% B = double(imread('../image/code_bar.png'));
 % B = double(imread('../image/cod.jpg'));
 % B = double(imread('../image/c1.jpg'));
 % B = double(imread('../image/c3.jpg'));
@@ -86,11 +81,4 @@ plot([ones(1, xcode(1,1)) 200+binary_code_image*100]);
 hold off
 title('visualsiation code bar')
 
-
-
-
-
-
-
-
-
+end

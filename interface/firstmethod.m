@@ -1,6 +1,4 @@
-clear all;
-close all;
-clc;
+function [] = firstmethod(B)
 
 %%
 
@@ -79,10 +77,6 @@ hold off
 title('visualsiation code bar')
 
 
-
-
-
-
-
+end
 
 

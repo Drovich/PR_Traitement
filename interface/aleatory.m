@@ -1,9 +1,4 @@
-clear all;
-close all;
-clc;
-
-%%
-
+function [] = aleatory()
 n=15; %% devrait être défini en fonction de la longeur de mon code bar sur l'image, et si possible impair !!
 M=n*95;
 
@@ -86,11 +81,4 @@ plot([ones(1, xcode(1,1)) 200+binary_code_image*100]);
 hold off
 title('visualsiation code bar')
 
-
-
-
-
-
-
-
-
+end
