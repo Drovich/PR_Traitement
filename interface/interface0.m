@@ -22,7 +22,7 @@ function varargout = interface0(varargin)
 
 % Edit the above text to modify the response to help interface0
 
-% Last Modified by GUIDE v2.5 11-Dec-2018 13:46:15
+% Last Modified by GUIDE v2.5 11-Dec-2018 17:13:55
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -78,8 +78,14 @@ function aleatory_launch_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 try
-aleatory(handles.image);
+    textLabel = sprintf('Processing...');
+    set(handles.text_main, 'String', textLabel);
+    aleatory(handles.image);
+    textLabel = sprintf('Process over');
+    set(handles.text_main, 'String', textLabel);
 catch
+    textLabel = sprintf('Error : Loading image not found...');
+    set(handles.text_main, 'String', textLabel);
 end
 % Hint: get(hObject,'Value') returns toggle state of aleatory_launch
 
@@ -90,9 +96,16 @@ function method2points_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 try
-firstmethod(handles.image);
+    textLabel = sprintf('Processing...');
+    set(handles.text_main, 'String', textLabel);
+    firstmethod(handles.image);
+    textLabel = sprintf('Process over');
+    set(handles.text_main, 'String', textLabel);
 catch
+    textLabel = sprintf('Error : Startup image not found...');
+    set(handles.text_main, 'String', textLabel);
 end
+
 % Hint: get(hObject,'Value') returns toggle state of method2points
 
 
@@ -101,15 +114,45 @@ function loadingimage_Callback(hObject, eventdata, handles)
 % hObject    handle to loadingimage (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-[file,path] = uigetfile('*.jpg', 'rt');
-image = imread(fullfile(path, file));
-handles.image = image;
-% % handles.Fs = signal.Fs;
-% handles.N = size(handles.data,2);
-% handles.time_axis = (1:handles.N)/handles.Fs;
-imshow(image); grid on;
-% % xlabel('Time (s)');
-% % ylabel('Magnitude');
-% textLabel = sprintf('Time evolution of the loaded signal');
-% set(handles.text_main, 'String', textLabel);
+try
+    [file,path] = uigetfile('*.jpg', 'rt');
+    image = double(imread(fullfile(path, file)));
+    handles.image = image;
+    % % handles.Fs = signal.Fs;
+    % handles.N = size(handles.data,2);
+    % handles.time_axis = (1:handles.N)/handles.Fs;
+    imshow(uint8(image));
+    % % xlabel('Time (s)');
+    % % ylabel('Magnitude');
+    % textLabel = sprintf('Time evolution of the loaded signal');
+    % set(handles.text_main, 'String', textLabel);
+    textLabel = sprintf('Image loaded');
+    set(handles.text_main, 'String', textLabel);
+catch
+    textLabel = sprintf('Error : Loading image not found...');
+    set(handles.text_main, 'String', textLabel);
+end
 guidata(hObject, handles);
+
+
+
+function text_main_Callback(hObject, eventdata, handles)
+% hObject    handle to text_main (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of text_main as text
+%        str2double(get(hObject,'String')) returns contents of text_main as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function text_main_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to text_main (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
