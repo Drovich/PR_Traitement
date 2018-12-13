@@ -23,7 +23,7 @@ M=n*95;
 % B = double(imread('../image/c6.jpg'));
 % B = double(imread('../image/c8.jpg'));
 % B = double(imread('../image/c10.jpg'));
-% B = double(imread('../image/c11.jpg'));
+B = double(imread('../image/c11.jpg'));
 % B = double(imread('../image/c12.jpg'));
 
 

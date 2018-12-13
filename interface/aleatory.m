@@ -1,4 +1,4 @@
-function [] = aleatory(B)
+function [cle_controle, plausibilites, chiffres,nb_lancer]= aleatory(B)
 n=15; %% devrait être défini en fonction de la longeur de mon code bar sur l'image, et si possible impair !!
 M=n*95;
 
@@ -26,15 +26,18 @@ codes     = rgbtogray(B);
 imshow(uint8(codes));
 
 [w,h] = size(codes);
-a=0;
+nb_lancer=0;
 plausibilites=zeros(1,13);
 chiffres = zeros(1,13) -1;
-while ( (plausibilites(1)<0.8) || (chiffres(1)<0) || cle_controle<0 )
+seuil_plausi=0.95;
+nb_lancer_partiel=0
+while ( (plausibilites(1)<seuil_plausi) || (chiffres(1)<0) || cle_controle<0 )
     x = 0;
     y = 0;
     x = round(2 + (h-3)*rand(2));
     y = round(2 + (w-3)*rand(2));
     L=0;
+
     [xech, yech, L] = echantillonage(x,y,L);
     
     
@@ -54,11 +57,27 @@ while ( (plausibilites(1)<0.8) || (chiffres(1)<0) || cle_controle<0 )
     
     [binary_code_image] = seuillage(profil_code,threshold2);
     
-    [elements, chiffres, plausibilites,cle_controle] = get_elts_chiffres(binary_code_image, n)
-    a=a+1
+    [elements, chiffres, plausibilites,cle_controle] = get_elts_chiffres(binary_code_image, n);
+    nb_lancer=nb_lancer+1;
+    nb_lancer_partiel = nb_lancer_partiel+1;
     plausibilites(1);
-end
+    if nb_lancer_partiel>100
+        seuil_plausi=seuil_plausi-seuil_plausi/1000;
+        nb_lancer_partiel=0;
+         
+        imshow(uint8(B));
+        hold on
+        plot(x(1),y(1),'r*');
+        plot(x(2),y(2),'r*');
+        plot(xech,yech,'b*');
 
+        hold off
+        drawnow update ;  
+
+        nb_lancer
+        seuil_plausi
+    end
+end
 % [binary_code] = code_img2code(binary_code_image,n);
 
 % hold on

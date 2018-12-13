@@ -1,4 +1,4 @@
-function [] = firstmethod(B)
+function [cle_controle, plausibilites, chiffres] = firstmethod(B)
 
 %%
 
