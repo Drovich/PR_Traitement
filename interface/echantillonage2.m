@@ -1,4 +1,4 @@
-function [x_ech,y_ech] = echantillonage(a1,a2,L)
+function [x_ech,y_ech] = echantillonage2(a1,a2)
 
 
 x1 = (a1(1));
@@ -13,9 +13,9 @@ if y1==y2
     y2=y1-1;
 end
 
-if L==0
-    L = sqrt((x1-x2)^2+(y1-y2)^2);
-end
+
+L = sqrt((x1-x2)^2+(y1-y2)^2);
+
 
 % pas = abs(x1-x2)/L;
 % pas = abs(y1-y2)/L;

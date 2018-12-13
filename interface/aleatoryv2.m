@@ -1,4 +1,4 @@
-function [cle_controle, plausibilites, chiffres,nb_lancer]= aleatory(B)
+function [cle_controle, plausibilites, chiffres,nb_lancer]= aleatoryv2(B)
 n=15; %% devrait être défini en fonction de la longeur de mon code bar sur l'image, et si possible impair !!
 M=n*95;
 
@@ -30,12 +30,23 @@ plausibilites=zeros(1,13);
 chiffres = zeros(1,13) -1;
 seuil_plausi=0.95;
 nb_lancer_partiel=0
+
+[D, T] = region_interet(B, 0.5, 25);
+MASK=uint8(D);
+%     x = 0;
+%     y = 0;
+[xlim,ylim] = tirer_autour_region(MASK)
+% hold on
+% plot(xlim,ylim,'r*');
+% hold off
+% drawnow update ;  
+
 while ( (plausibilites(1)<seuil_plausi) || (chiffres(1)<0) || cle_controle<0 )
-    x = 0;
-    y = 0;
-    x = round(2 + (h-3)*rand(2));
-    y = round(2 + (w-3)*rand(2));
-    L=zeros(1);
+
+%     x = round(xlim(1) + (xlim(2)-xlim(1))*rand(2) );
+%     y = round(ylim(1) + (ylim(2)-ylim(1))*rand(2) );
+    [x y] = point_aleatoire(xlim,ylim);
+    L=0;
 
     [xech, yech] = echantillonage(x,y,L);
     

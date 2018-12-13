@@ -32,7 +32,7 @@ imshow(uint8(codes));
 
 [x,y]=ginput();
 L=0;
-[xech, yech, L] = echantillonage(x,y,L);
+[xech, yech] = echantillonage(x,y,L);
 
 
 [profil] = extract_from_img(xech,yech,codes);
@@ -44,7 +44,7 @@ L=0;
 % [xcode,ycode] = extract_code(profil,xech,yech);
 
 
-[xcode_ech, ycode_ech, M] = echantillonage(xcode,ycode,M);
+[xcode_ech, ycode_ech] = echantillonage(xcode,ycode,M);
 [profil_code] = extract_from_img(xcode_ech,ycode_ech,codes);
 
 [threshold2] = get_seuil(profil_code);

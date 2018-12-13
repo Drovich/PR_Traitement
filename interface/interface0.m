@@ -77,11 +77,11 @@ function aleatory_launch_Callback(hObject, eventdata, handles)
 % hObject    handle to aleatory_launch (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-try
+% try
     textLabel = sprintf('Processing...');
     set(handles.text_main, 'String', textLabel);
     drawnow update ;
-    [cle_controle, plausibilites,chiffres,nb_lancer] = aleatory(handles.image);
+    [cle_controle, plausibilites,chiffres,nb_lancer] = aleatoryv2(handles.image);
     if (cle_controle==1)
         textLabel = sprintf('Process over');
         set(handles.text_main, 'String', textLabel);
@@ -95,10 +95,10 @@ try
         textLabel = sprintf('ERROR : Code barre non valide');
         set(handles.text_main, 'String', textLabel);
     end
-catch
+% catch
     textLabel = sprintf('Error : Loading image not found...');
     set(handles.text_main, 'String', textLabel);
-end
+% end
 % Hint: get(hObject,'Value') returns toggle state of aleatory_launch
 
 

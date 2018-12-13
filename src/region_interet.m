@@ -19,9 +19,9 @@ Iy=conv2(I,Hy,'same');
 % Ix=conv2(G,Hx,'same');
 % Iy=conv2(G,Hy,'same');
 
-[w h] = size(Ix)
-for i=1:w
-    for j=1:h
+[h w] = size(Ix)
+for i=1:h
+    for j=1:w
         M = (Ix(i,j).^2+Iy(i,j).^2).^0.5;
         Ix(i,j) = Ix(i,j)/M;
         Iy(i,j) = Iy(i,j)/M;

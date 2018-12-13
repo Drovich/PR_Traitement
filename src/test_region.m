@@ -19,15 +19,15 @@ M=n*95;
 % B = double(imread('../image/code1.jpg'));
 % B = double(imread('../image/c1.jpg'));
 % B = double(imread('../image/c3.jpg'));
-B = double(imread('../image/c10.jpg'));
+% B = double(imread('../image/c10.jpg'));
 % B = double(imread('../image/c11.jpg'));
-% B = double(imread('../image/c12.jpg'));
-codes     = rgbtogray(B);
+B = double(imread('../image/c12.jpg'));
+% codes     = rgbtogray(B);
 
-imshow(uint8(codes));
+imshow(uint8(B));
 
-[D, T] = region_interet(codes, 0.5, 25);
-% M=uint8(D);
+[D, T] = region_interet(B, 0.5, 25);
+M=uint8(D);
 % L=M*255;
 % % figure
 % % imshow(uint8(codes))
@@ -38,6 +38,7 @@ imshow(uint8(codes));
 % figure
 % imshow(uint8(codes.*double(M)));
 
+[x,y] = tirer_autour_region(M)
 
 
 
