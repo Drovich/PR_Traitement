@@ -1,13 +1,17 @@
 function [x,y] = tirer_autour_region(I);
 
-[h w] = size(I)
+[h w] = size(I);
 k=1;
+X = [];
+Y = [];
 for i=1:h
     for j=1:w
         if I(i,j)>0
-            X(k)=j;
-            Y(k)=i;
-            k=k+1;
+            X = [X j];
+            Y = [Y i];
+%             X(k)=j;
+%             Y(k)=i;
+%             k=k+1;
         end
     end
 end

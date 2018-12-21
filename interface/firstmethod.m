@@ -30,7 +30,7 @@ codes     = rgbtogray(B);
 
 imshow(uint8(codes));
 
-[x,y]=ginput();
+[x,y]=ginput(2);
 L=0;
 [xech, yech] = echantillonage(x,y,L);
 

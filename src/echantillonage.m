@@ -8,9 +8,15 @@ x2 = (a1(2));
 y2 = (a2(2));
 if x1==x2
     x2=x1-1;
+    if x2==0
+        x2=2;
+    end
 end
 if y1==y2
     y2=y1-1;
+    if y2==0
+        y2=2;
+    end
 end
 
 if L==0

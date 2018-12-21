@@ -259,7 +259,7 @@ try
     textLabel = sprintf('Processing...');
     set(handles.text_main, 'String', textLabel);
     drawnow update ;    
-    [D, T] = region_interet(handles.image, 0.5, 25);
+    [D, T] = region_interet(handles.image, 0.5, 10);
     textLabel = sprintf('Process over');
     set(handles.text_main, 'String', textLabel);
 

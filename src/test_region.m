@@ -21,12 +21,12 @@ M=n*95;
 % B = double(imread('../image/c3.jpg'));
 % B = double(imread('../image/c10.jpg'));
 % B = double(imread('../image/c11.jpg'));
-B = double(imread('../image/c12.jpg'));
+B = double(imread('../image/c11.jpg'));
 % codes     = rgbtogray(B);
 
-imshow(uint8(B));
+% imshow(uint8(B));
 
-[D, T] = region_interet(B, 0.5, 25);
+[D, T] = region_interet(B, 0.5, 20);
 M=uint8(D);
 % L=M*255;
 % % figure
@@ -37,8 +37,18 @@ M=uint8(D);
 % imshow(L);
 % figure
 % imshow(uint8(codes.*double(M)));
-
-[x,y] = tirer_autour_region(M)
-
-
+n=8;
+[L,num] = bwlabel(M,n);
+BAR=[]
+% imshow(M.*uint8(B))
+hold on
+for i=1:num
+    L2 = L==i;
+    [x,y] = tirer_autour_region(L2);
+    [BAR] = [BAR vecteur_interet(L2)]
+    plot(BAR(2,i),BAR(1,i),'r*');
+end
+hold off
+BAR=ceil(BAR);
+figure, imshow(L*4);
 
