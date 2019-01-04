@@ -71,11 +71,6 @@ plot(xcode(1,2),ycode(1,2),'r*');
 
 plot(xcode_ech,ycode_ech,'b*');
 
-plot([ones(1, floor(x(1))) 20+binary_image*100]);
-plot([ones(1, xcode(1,1)) 200+binary_code_image*100]);
-hold off
-title('visualsiation code bar')
-
 
 end
 
