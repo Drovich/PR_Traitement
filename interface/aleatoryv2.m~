@@ -20,9 +20,19 @@ chiffres = zeros(1,13) -1;
 seuil_plausi=0.9;
 nb_lancer_partiel=0
 
-[D, T] = region_interet(B, 0.5, 20);
+[D, T] = region_interet(B, 0.5, 10);
 MASK=uint8(D);
 [zones num] = bwlabel(MASK);
+
+
+%     x = 0;
+%     y = 0;
+% num
+% for i=1:num
+%     zone = (zones == i);
+%     [xlim,ylim] = tirer_autour_region(zone);
+%     seuil_plausi=0.9;
+    
     
     while ( ( (plausibilites(1)<seuil_plausi) || (chiffres(1)<0) || cle_controle<0) )
         

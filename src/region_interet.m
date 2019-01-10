@@ -33,11 +33,21 @@ Tyy = conv2(Iy.*Iy,W,'same');
 
 D = sqrt( (Txx-Tyy).^2 + 4*Txy.^2 ) ./ ( Txx+Tyy );
 
+% threshold=mean(mean(D));
+threshold=0.5;
+for i =1:length(I)
+    threshold=threshold+get_seuil(I(i,:));
+end
+threshold=threshold/length(I)
 
-M=uint8(D);
+D=255*uint8((D*255)>threshold);
+% D=255*uint8(D>threshold);
 
+figure, 
+imshow(D);
 
-imshow(uint8(I.*double(M)));
+% figure
+% imshow(uint8(I.*double(M)));
 
 
 end

@@ -22,7 +22,7 @@ function varargout = interface0(varargin)
 
 % Edit the above text to modify the response to help interface0
 
-% Last Modified by GUIDE v2.5 13-Dec-2018 10:56:49
+% Last Modified by GUIDE v2.5 10-Jan-2019 22:25:02
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -259,7 +259,7 @@ try
     textLabel = sprintf('Processing...');
     set(handles.text_main, 'String', textLabel);
     drawnow update ;    
-    [D, T] = region_interet(handles.image, 0.5, 10);
+    [D, T] = region_interet(handles.image, 0.5, 20);
     textLabel = sprintf('Process over');
     set(handles.text_main, 'String', textLabel);
 
@@ -269,3 +269,49 @@ catch
 end
 
 % Hint: get(hObject,'Value') returns toggle state of locate_region
+
+
+
+function sigma_G_Callback(hObject, eventdata, handles)
+% hObject    handle to sigma_G (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of sigma_G as text
+%        str2double(get(hObject,'String')) returns contents of sigma_G as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function sigma_G_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to sigma_G (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function sigma_T_Callback(hObject, eventdata, handles)
+% hObject    handle to sigma_T (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of sigma_T as text
+%        str2double(get(hObject,'String')) returns contents of sigma_T as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function sigma_T_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to sigma_T (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end

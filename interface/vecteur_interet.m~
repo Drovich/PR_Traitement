@@ -21,29 +21,18 @@ for j=1:length(zone)
         a22 = a22 + (k-BAR(2))^2;
     end
 end
-A=[a11 a12; a12 a22];
-[u,lambda]=eig(A);
-u(:,1)=u(:,1)/norm(u(:,1));
-u(:,2)=u(:,2)/norm(u(:,2));
+A=[a11 a12; a12 a22]
+[u,lambda]=eig(A)
+u(:,1)=u(:,1)/norm(u(:,1))
+u(:,2)=u(:,2)/norm(u(:,2))
 
-extr1 = -1000000000;
-extr2 = 10000000000;
+
 for j=1:length(zone)
     for k=1:length(zone(1,:))
-        if zone(j,k) ==1        
-            dist = dot([j; k]-BAR, u(:,1));
-            if(extr1<dist)
-                extr1=dist;
-            end
-            if(extr2>dist)
-                extr2=dist;
-            end
-        end            
+        dist = dot(zone(i),u(:,1))
     end
 end
-l=extr1-extr2;
-
-% l=dot(zone,u(:,1))
+l=dot(zone,u(:,1))
 % [maxi rangmax]=max(sum(lambda))
 % [mini rangmin]=min(sum(lambda))
 

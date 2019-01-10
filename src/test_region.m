@@ -14,41 +14,37 @@ M=n*95;
 % % % après ça reste pas ouf, nottement un petit probleme dans le seuil quand
 % % % l'image est trop "binaire" que j'ai régler en fixant abritrairement a
 % % % 128 quand c'est le cas, sinon il est a 256...
-% B = double(imread('../image/code_bar.png'));
-% B = double(imread('../image/cod.jpg'));
-% B = double(imread('../image/code1.jpg'));
-% B = double(imread('../image/c1.jpg'));
-% B = double(imread('../image/c3.jpg'));
-% B = double(imread('../image/c10.jpg'));
-% B = double(imread('../image/c11.jpg'));
+
 B = double(imread('../image/c11.jpg'));
 % codes     = rgbtogray(B);
 
 % imshow(uint8(B));
 
 [D, T] = region_interet(B, 0.5, 20);
-M=uint8(D);
-% L=M*255;
-% % figure
-% % imshow(uint8(codes))
-% % figure
-% % imagesc(M);
-% figure
-% imshow(L);
-% figure
-% imshow(uint8(codes.*double(M)));
+
+
 n=8;
-[L,num] = bwlabel(M,n);
-BAR=[]
+[L,num] = bwlabel(D,n);
+BAR=zeros(2,num);
+u=[];
+lambda=[];
 % imshow(M.*uint8(B))
+v=[];
+alpha=1;
+beta=0.01;
+l=200;
 hold on
 for i=1:num
+    v=zeros(2,2);
     L2 = L==i;
     [x,y] = tirer_autour_region(L2);
-    [BAR] = [BAR vecteur_interet(L2)]
+    [BAR(:,i) u lambda l] = vecteur_interet(L2);
+    v(:,1)=ceil( BAR(:,i)-alpha*(l/2)*(u(:,1)+beta*u(:,2)) );
+    v(:,2)=ceil( BAR(:,i)+alpha*(l/2)*(u(:,1)+beta*u(:,2)) );
     plot(BAR(2,i),BAR(1,i),'r*');
+    plot(v(2,:),v(1,:),'r*');
 end
 hold off
 BAR=ceil(BAR);
-figure, imshow(L*4);
+% figure, imshow(L*4);
 
